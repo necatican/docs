@@ -4,7 +4,47 @@ import { InlineCode } from '~/components/text/code'
 
 export const meta = {
   editUrl: 'pages/docs/now-cli/v2/now-cli-mdx/commands/now-dns.mdx',
-  lastEdited: '2019-09-03T18:20:17.000Z'
+  lastEdited: '2019-09-03T19:29:11.000Z'
 }
 
 ## DNS
+
+The `now dns` command is used to manage DNS record for domains, providing functionality to list, add, remove, and import records.
+
+### Basic Usage
+
+<Snippet dark text="now dns ls" />
+<Caption>Using the <InlineCode>now dns</InlineCode> command to list all DNS records under an account.</Caption>
+
+### Extended Usage
+
+<Snippet dark text="now dns add [domain] [subdomain] [A || AAAA || ALIAS || CNAME || TXT] [value]" />
+<Caption>Using the <InlineCode>now dns</InlineCode> command to add an A record for a subdomain.</Caption>
+
+<Snippet dark text="now dns add [domain] '@' MX [record-value] [priority]" />
+<Caption>Using the <InlineCode>now dns</InlineCode> command to add an MX record for a domain.</Caption>
+
+<Snippet dark text="now dns add [domain] [name] SRV [priority] [weight] [port] [target]" />
+<Caption>Using the <InlineCode>now dns</InlineCode> command to add an SRV record for a domain.</Caption>
+
+<Snippet dark text={`now dns add [domain] [name] CAA '[flags] [tag] "[value]"'`} />
+<Caption>Using the <InlineCode>now dns</InlineCode> command to add a CAA record for a domain.</Caption>
+
+<Snippet dark text="now dns rm [record-id]" />
+<Caption>Using the <InlineCode>now dns</InlineCode> command to remove a record for a domain.</Caption>
+
+<Snippet dark text="now dns import [domain] [path-to-zonefile]" />
+<Caption>Using the <InlineCode>now dns</InlineCode> command to import a zonefile for a domain.</Caption>
+
+### Options Available
+
+The following options can be passed when using the `now dns` command:
+
+- `--debug`
+- `--global-config`
+- `--help`
+- `--local-config`
+- `--scope`
+- `--token`
+
+For more information on options and their usage, refer to the [options section](#options).
