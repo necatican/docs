@@ -300,6 +300,10 @@ class Header extends Component {
                           {
                             title: 'Integrations API',
                             url: '/docs/integrations'
+                          },
+                          {
+                            title: 'Now CLI',
+                            url: '/docs/now-cli'
                           }
                         ]}
                       />
