@@ -432,6 +432,15 @@ class Header extends Component {
                   Integrations API
                 </NavigationItem>
               </div>
+              <div className="group">
+                <NavigationItem
+                  href="/docs/now-cli"
+                  active={router.pathname.startsWith('/docs/now-cli')}
+                  onClick={handleIndexClick}
+                >
+                  Now CLI
+                </NavigationItem>
+              </div>
             </div>
 
             <div className="section">
