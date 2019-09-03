@@ -1,0 +1,17 @@
+import Snippet from '~/components/snippet'
+import Caption from '~/components/text/caption'
+import { InlineCode } from '~/components/text/code'
+
+export const meta = {
+  editUrl: 'pages/docs/now-cli/v2/now-cli-mdx/options/build-env.mdx',
+  lastEdited: '2019-09-03T23:06:27.000Z'
+}
+
+## Build Env
+
+The `--build-env`, shorthand `-b`, option can be used with the [`now deploy` command](/docs/now-cli/#commands/deploy) to provide multiple environment variables to the build step.
+
+### Usage Example
+
+<Snippet dark text="now deploy --build-env [key1=value1 key2=value2 key3=value3]" />
+<Caption>Using the <InlineCode>now deploy</InlineCode> command with the <InlineCode>--build-env</InlineCode> option to provide multiple environment variables to the build step.</Caption>
