@@ -1,9 +1,31 @@
-import Note from '~/components/text/note'
-import { GenericLink } from '~/components/text/link'
+import Snippet from '~/components/snippet'
+import Caption from '~/components/text/caption'
+import { InlineCode } from '~/components/text/code'
 
 export const meta = {
   editUrl: 'pages/docs/now-cli/v2/now-cli-mdx/commands/now-switch.mdx',
-  lastEdited: '2019-09-03T16:04:59.000Z'
+  lastEdited: '2019-09-03T18:09:47.000Z'
 }
 
 ## Switch
+
+The `now switch` command is used to switch to a different team scope when logged in with Now CLI. You can choose to select a team from a list of all those you are part of, or specify a team when entering the command.
+
+### Basic Usage
+
+<Snippet dark text="now switch" />
+<Caption>Using the <InlineCode>now switch</InlineCode> command to change team scope with Now CLI.</Caption>
+
+### Extended Usage
+
+<Snippet dark text="now switch [team-name]" />
+<Caption>Using the <InlineCode>now switch</InlineCode> command to change to a specific team scope with Now CLI.</Caption>
+
+### Options Available
+
+The following options can be passed when using the `now switch` command:
+
+- `--debug`
+- `--help`
+
+For more information on options and their usage, refer to the [options section](#options).
