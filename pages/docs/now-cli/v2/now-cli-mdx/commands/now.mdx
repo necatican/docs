@@ -1,0 +1,41 @@
+import Snippet from '~/components/snippet'
+import Note from '~/components/text/note'
+import { GenericLink } from '~/components/text/link'
+import Caption from '~/components/text/caption'
+import { InlineCode } from '~/components/text/code'
+
+export const meta = {
+  editUrl: 'pages/docs/now-cli/v2/now-cli-mdx/commands/now.mdx',
+  lastEdited: '2019-09-03T14:41:14.000Z'
+}
+
+### Deploy
+
+The `now deploy` command, commonly shortened to just `now`, is used to deploy projects and can be used from either the root of the project directory, or by providing a path to it.
+
+#### Basic Usage
+
+<Snippet dark text="now" />
+<Caption>Using the <InlineCode>now</InlineCode> command from the root of a project directory.</Caption>
+
+#### Extended Usage
+
+<Snippet dark text="now [path-to-project]" />
+<Caption>Using the <InlineCode>now</InlineCode> command and supplying a path to the root directory of the project.</Caption>
+
+#### Options Available
+
+The following options can be passed when using the `now` command:
+
+- `--build-env`
+- `--debug`
+- `--env`
+- `--force`
+- `--help`
+- `--name`
+- `--prod`
+- `--public`
+- `--regions`
+- `--version`
+
+For more information on options and their usage, refer to the [options section](#options).
