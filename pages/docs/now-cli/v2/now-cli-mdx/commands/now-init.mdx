@@ -1,9 +1,42 @@
-import Note from '~/components/text/note'
-import { GenericLink } from '~/components/text/link'
+import Snippet from '~/components/snippet'
+import Caption from '~/components/text/caption'
+import { InlineCode } from '~/components/text/code'
 
 export const meta = {
   editUrl: 'pages/docs/now-cli/v2/now-cli-mdx/commands/now-init.mdx',
   lastEdited: '2019-09-03T15:04:03.000Z'
 }
 
-## Now Init
+## Init
+
+The `now init` command is used to initialize projects locally from the [Now Examples](https://github.com/zeit/now-examples) repository.
+
+### Basic Usage
+
+<Snippet dark text="now init" />
+<Caption>Using the <InlineCode>now init</InlineCode> command to initialize a project locally.</Caption>
+
+### Extended Usage
+
+<Snippet dark text="now init [project-name]" />
+<Caption>Using the <InlineCode>now init</InlineCode> command to initialize a specific project locally.</Caption>
+
+<Snippet dark text="now init [project-name] [new-project-name]" />
+<Caption>Using the <InlineCode>now init</InlineCode> command to initialize a specific project locally and rename the directory.</Caption>
+
+### Options Available
+
+The following options can be passed when using the `now init` command:
+
+- `--build-env`
+- `--debug`
+- `--env`
+- `--force`
+- `--help`
+- `--name`
+- `--prod`
+- `--public`
+- `--regions`
+- `--version`
+
+For more information on options and their usage, refer to the [options section](#options).

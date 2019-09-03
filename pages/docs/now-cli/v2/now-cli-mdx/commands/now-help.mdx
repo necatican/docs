@@ -1,9 +1,17 @@
-import Note from '~/components/text/note'
-import { GenericLink } from '~/components/text/link'
+import Snippet from '~/components/snippet'
+import Caption from '~/components/text/caption'
+import { InlineCode } from '~/components/text/code'
 
 export const meta = {
   editUrl: 'pages/docs/now-cli/v2/now-cli-mdx/commands/now-help.mdx',
   lastEdited: '2019-09-03T15:04:03.000Z'
 }
 
-## Now Help
+## Help
+
+The `now help` command generates a list of all available Now CLI [commands](#commands) and [options](#options) in the terminal.
+
+### Basic Usage
+
+<Snippet dark text="now help" />
+<Caption>Using the <InlineCode>now help</InlineCode> command to generate a list of Now CLI commands and options.</Caption>
