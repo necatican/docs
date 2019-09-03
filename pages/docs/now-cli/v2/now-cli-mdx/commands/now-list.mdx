@@ -1,9 +1,40 @@
-import Note from '~/components/text/note'
-import { GenericLink } from '~/components/text/link'
+import Snippet from '~/components/snippet'
+import Caption from '~/components/text/caption'
+import { InlineCode } from '~/components/text/code'
 
 export const meta = {
   editUrl: 'pages/docs/now-cli/v2/now-cli-mdx/commands/now-list.mdx',
-  lastEdited: '2019-09-03T15:04:03.000Z'
+  lastEdited: '2019-09-03T16:04:59.000Z'
 }
 
 ## List
+
+The `now list` command, which can be shortened to `now ls`, is used to provide a list of your deployments along with information about them.
+
+### Basic Usage
+
+<Snippet dark text="now list" />
+<Caption>Using the <InlineCode>now list</InlineCode> command to retrieve information about multiple deployments.</Caption>
+
+### Extended Usage
+
+<Snippet dark text="now list [project-name]" />
+<Caption>Using the <InlineCode>now list</InlineCode> command to retrieve information about deployments for a specific project.</Caption>
+
+<Snippet dark text="now list [project-name] [--meta foo=bar]" />
+<Caption>Using the <InlineCode>now list</InlineCode> command to retrieve information about deployments filtered by metadata.</Caption>
+
+### Options Available
+
+The following options can be passed when using the `now inspect` command:
+
+- `--all`
+- `--debug`
+- `--global-config`
+- `--help`
+- `--local-config`
+- `--meta`
+- `--scope`
+- `--token`
+
+For more information on options and their usage, refer to the [options section](#options).
