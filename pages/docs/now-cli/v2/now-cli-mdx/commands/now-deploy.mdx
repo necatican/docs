@@ -4,7 +4,7 @@ import { InlineCode } from '~/components/text/code'
 
 export const meta = {
   editUrl: 'pages/docs/now-cli/v2/now-cli-mdx/commands/now-deploy.mdx',
-  lastEdited: '2019-09-03T16:04:59.000Z'
+  lastEdited: '2019-09-03T21:59:15.000Z'
 }
 
 ## Deploy
@@ -25,15 +25,20 @@ The `now deploy` command, commonly shortened to just `now`, is used to deploy pr
 
 The following options can be passed when using the `now` command:
 
-- `--build-env`
 - `--debug`
-- `--env`
 - `--force`
 - `--help`
-- `--name`
-- `--prod`
-- `--public`
-- `--regions`
-- `--version`
+
+### Unique Options
+
+These are options that only apply to the `now deploy` command, therefore, more information is provided.
+
+- `--build-env` - provides the [build step](/docs/v2/build-step) with an environment variable
+- `--env` - provides the [run time](/docs/v2/serverless-functions#env-and-secrets) with an environment variable
+- `--name` - provides a project name
+- `--prod` - generates a deployment for a production domain
+- `--public` - ensures the source code is accessible at the `/_src` paths
+- `--regions` - specifies which regions the [Serverless Functions](/docs/v2/serverless-functions) should run in
+- `--version` - returns informationg about the [Now CLI](/download) platform version
 
 For more information on options and their usage, refer to the [options section](#options).
