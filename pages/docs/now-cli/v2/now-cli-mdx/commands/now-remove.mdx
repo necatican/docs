@@ -1,10 +1,51 @@
 import Snippet from '~/components/snippet'
 import Caption from '~/components/text/caption'
 import { InlineCode } from '~/components/text/code'
+import Note from '~/components/text/note'
 
 export const meta = {
   editUrl: 'pages/docs/now-cli/v2/now-cli-mdx/commands/now-remove.mdx',
-  lastEdited: '2019-09-03T18:20:17.000Z'
+  lastEdited: '2019-09-03T21:05:39.000Z'
 }
 
 ## Remove
+
+The `now remove` command, which can be shortened to `now rm`, is used to remove deployments either by ID or for a specific project.
+
+### Basic Usage
+
+<Snippet dark text="now remove [deployment-url]" />
+<Caption>Using the <InlineCode>now remove</InlineCode> command to remove a deployment from the ZEIT Now platform.</Caption>
+
+### Extended Usage
+
+<Snippet dark text="now remove [deployment-url-1 deployment-url-2]" />
+<Caption>Using the <InlineCode>now remove</InlineCode> command to remove multiple deployments from the ZEIT Now platform.</Caption>
+
+<Snippet dark text="now remove [project-name]" />
+<Caption>Using the <InlineCode>now remove</InlineCode> command to remove all deployments for a project from the ZEIT Now platform.</Caption>
+
+<Note warning>
+  By using the project name, the entire project will be removed from the
+  account.
+</Note>
+
+### Options Available
+
+The following options can be passed when using the `now remove` command:
+
+- `--debug`
+- `--global-config`
+- `--help`
+- `--local-config`
+- `--scope`
+- `--token`
+
+### Unique Options
+
+These are the options that only apply to this particular Now CLI [command](#commands), therefore, more information is provided.
+
+- `--safe` - skip deployments with an active aliasß
+- `--yes` - allows the skipping of confirmation
+
+For more information on options and their usage, refer to the [options section](#options).
