@@ -12,7 +12,7 @@ export const meta = {
   description:
     'A look at what Builders are and how they are used with ZEIT Now deployment Builds to achieve production-ready outputs.',
   editUrl: 'pages/docs/v2/advanced/builders.mdx',
-  lastEdited: '2019-09-02T03:53:55.000Z'
+  lastEdited: '2019-09-03T13:21:25.000Z'
 }
 
 Builders are modules that transform your source code into compiled outputs, being either static files and/or [Serverless Functions](https://zeit.co/docs/v2/advanced/concepts/lambdas/), which are served by our [CDN at the edge](https://zeit.co/docs/v2/advanced/concepts/cdn-and-global-distribution/).
@@ -836,6 +836,12 @@ You can provide custom build flags by using `GO_BUILD_FLAGS`.
   }
 }
 ```
+
+<Caption>
+  An example <InlineCode>-ldflags</InlineCode> flag with{' '}
+  <InlineCode>-s -w</InlineCode>. This will remove debug information from the
+  binary file, reduce its file size. Go Builder already included this flag.
+</Caption>
 
 ### Advanced Python Usage
 
