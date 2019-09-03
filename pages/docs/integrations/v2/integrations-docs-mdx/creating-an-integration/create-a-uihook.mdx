@@ -6,8 +6,8 @@ import { GenericLink } from '~/components/text/link'
 
 export const meta = {
   editUrl:
-    'pages/docs/integrations/v2/integrations-docs-mdx/getting-started/create-a-uihook.mdx',
-  lastEdited: '2019-05-20T12:48:18.000Z'
+    'pages/docs/integrations/v2/integrations-docs-mdx/creating-an-integration/create-a-uihook.mdx',
+  lastEdited: '2019-09-02T13:56:22.000Z'
 }
 
 ## Step 2: Creating a UIHook
@@ -58,7 +58,21 @@ With the [help of `now dev`](/docs/v2/development/basics), you can run your UIHo
 
 By running your UIHook locally, you can test that your Integration, after creating the Integration with ZEIT, behaves as expected before deploying your Integration to production. This will be explored further in the next section.
 
-To run the UIHook locally, use the following command:
+To run the UIHook locally, create a `now.json` file and add the following:
 
-<TerminalInput>now dev -p 5005</TerminalInput>
+```js
+{
+  "name": "my-ui-hook",
+  "version": 2,
+  "builds": [{ "src": "index.js", "use": "@now/node" }]
+}
+```
+
+<Caption>
+  An example <InlineCode>now.json</InlineCode> config file.
+</Caption>
+
+Then, run the following command:
+
+<TerminalInput>now dev --listen 5005</TerminalInput>
 <Caption>Running the created UIHook locally on port 5005.</Caption>

@@ -13,7 +13,7 @@ export const meta = {
   authors: ['msweeneydev', 'timothy', 'skllcrn'],
   url: '/guides/migrate-to-zeit-now',
   editUrl: 'pages/guides/migrate-to-zeit-now.mdx',
-  lastEdited: '2019-08-23T14:21:42.000Z'
+  lastEdited: '2019-09-02T12:29:24.000Z'
 }
 
 This guide highlights a set of common scenarios and how they are deployed with ZEIT Now.
@@ -47,7 +47,7 @@ Next, [setup a Now for Git integration](/docs/v2/git-integration) to deploy your
 
 Serverful apps need to run consistently, watching for requests. Then, when requested, the app handles the request itself.
 
-In serverful monolith style apps, routing is commonly handled by a single file. Inside of that file, all routes are declared, providing a single point of failure. Let's look at an Express.js example to illustrate this:
+In serverful monolith style apps, routing is commonly handled by a single file. Let's look at an Express.js example to illustrate this:
 
 ```js
 app.get('/', function(req, res) {
@@ -67,7 +67,9 @@ app.get('/teams/data', function(req, res) {
 
 ### Moving to ZEIT Now and Serverless
 
-With serverless, functionality is split into separate files, called [Serverless Functions](/docs/v2/serverless-functions/introduction). When a path is requested, the individual Serverless Function is [invoked](/docs/v2/advanced/concepts/lambdas). This avoids the whole app from having to wait and watch for requests, saving on time and resources.
+With serverless, functionality is split into separate files, called [Serverless Functions](/docs/v2/serverless-functions/introduction). Instead of a file or process growing monolithically, this gives us the ability to break down the app into independently scalable parts.
+
+When a path is requested, the Serverless Function for that path is [invoked](/docs/v2/advanced/concepts/lambdas). This avoids the whole app from having to wait and watch for requests, saving on time and resources.
 
 #### Step 1: Creating an API Directory
 
@@ -75,7 +77,10 @@ The only requirement for Serverless Functions on Now, without advanced configura
 
 When using the `/api` directory, routing is based on the filesystem, making it easy to keep track of endpoints simply by looking at the file tree. For example, the file `/api/teams/zeit.js` would be available at the endpoint `/api/teams/zeit`.
 
-Note: When making calls to the `/api` directory, no file extensions are required.
+<Note>
+  When making calls to the <InlineCode>/api</InlineCode> directory, no file
+  extensions are required.
+</Note>
 
 For the above example, you would only need to place the `/teams` directory within the `/api` directory.
 
@@ -87,7 +92,7 @@ As an example the first file – `index.js` – would sit at the root of the `/a
 
 ```js
 module.exports = (req, res) => {
-  res.send('Hello world!')
+  res.send('Hello world from the /api route!')
 }
 ```
 
@@ -96,11 +101,14 @@ module.exports = (req, res) => {
   within the <InlineCode>/api</InlineCode> directory.
 </Caption>
 
-The next file would be placed inside the `/teams` directory inside of the `/api` directory, also named `index.js`. This is equivalent to `app.post('/teams')`. The contents of the file would be:
+The next file would be placed inside the `/teams` directory inside of the `/api` directory, also named `index.js`. This is equivalent to `app.post('/teams')` and could be used to create a new team. The contents of the file would be:
 
 ```js
 module.exports = (req, res) => {
-  res.send('This response would confirm a POST request to the teams endpoint.')
+  const { name } = req.body
+  res.send(
+    `This response would create a new team called ${name}, using a POST request.`
+  )
 }
 ```
 
@@ -124,7 +132,7 @@ module.exports = (req, res) => {
 
 <Note>
   The endpoint for an <InlineCode>index.js</InlineCode> file can be invoked
-  through the parent folder's path. You can opt-out of this behaviour by not
+  through the parent folder's path. You can opt-out of this behavior by not
   using the <InlineCode>index.js</InlineCode> filename for API endpoints.
 </Note>
 
@@ -139,15 +147,15 @@ app.get('/teams/:member', function(req, res) {
 ```
 
 <Caption>
-  A common routes configuration, that recieves and uses a route parameter, for
+  A common routes configuration, that receives and uses a route parameter, for
   serverful Express.js.
 </Caption>
 
 The above route uses the route parameter _member_, with Express.js making it available as part of the `req.query` object.
 
-To convert this route for use inside of the `/api` directory with Now, we will once again place it inside the `/teams` directory. However, this time we will name it `[member].js` - this is what is called a _Path Segment_.
+To convert this route for use inside of the `/api` directory with Now, we will once again place it inside the `/teams` directory. However, this time we will name it `[member].js` - this is called a _Path Segment_.
 
-Path Segments allows your endpoints to receive route parameters and, just like Express, they are made available on the `req.query` object with the key specified in the filename.
+Path Segments allow your endpoints to receive route parameters and, just like Express, they are made available on the `req.query` object with the key specified in the filename.
 
 Taking this into account, we can convert the above Express route for Now with the following code:
 

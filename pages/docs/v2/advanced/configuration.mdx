@@ -11,10 +11,10 @@ export const meta = {
   description:
     'Configuring ZEIT Now so that your deployments are exactly as you need them.',
   editUrl: 'pages/docs/v2/advanced/configuration.mdx',
-  lastEdited: '2019-08-30T11:25:09.000Z'
+  lastEdited: '2019-09-02T08:56:24.000Z'
 }
 
-When using [Now CLI](/download), [Now for GitHub](/docs/v2/getting-started/installation#now-for-github) or [Now for GitLab](/docs/v2/getting-started/installation#now-for-gitlab), the configuration for your deployment is read from the `now.json` file.
+When using [Now CLI](/download), [Now for GitHub](/docs/v2/advanced/now-for-github) or [Now for GitLab](/docs/v2/advanced/now-for-gitlab), the configuration for your deployment is read from the `now.json` file.
 
 The parameters stored in that file are passed to the [Deployment Creation API endpoint](/docs/api/v2#endpoints/deployments/create-a-new-deployment), which performs validation and stores the metadata in our backend.
 
@@ -66,7 +66,7 @@ Specifies the [Now Platform version](/docs/v2/advanced/platform/overview#version
 
 **Type**: `Array` or `String`.
 
-**Valid values**: [domain names](/docs/v2/custom-domains) (optionally including subdomains) added to the account, or a string for a suffxed URL using `.now.sh` or a [Custom Deployment Suffix](/docs/v2/platform/add-ons/#custom-deployment-suffix).
+**Valid values**: [domain names](/docs/v2/custom-domains) (optionally including subdomains) added to the account, or a string for a suffxed URL using `.now.sh` or a [Custom Deployment Suffix](/docs/v2/advanced/platform/add-ons/#custom-deployment-suffix).
 
 The alias or aliases are applied automatically using [Now for GitHub](/docs/v2/advanced/now-for-github) or [Now for GitLab](/docs/v2/advanced/now-for-gitlab) when merging or pushing to the default branch.
 
@@ -80,8 +80,8 @@ You can deploy to the defined aliases using [Now CLI](/download) by setting the 
 </Example>
 
 <Note>
-  Aliases from a `now.json` file will be **ignored** when there are domains that
-  have been{' '}
+  Aliases from a <InlineCode>now.json</InlineCode> file will be <b>ignored</b>{' '}
+  when there are domains that have been{' '}
   <GenericLink href="/docs/v2/custom-domains/#deploying-with-your-domain">
     configured for the project through the dashboard
   </GenericLink>
@@ -94,9 +94,9 @@ You can deploy to the defined aliases using [Now CLI](/download) by setting the 
 
 **Valid values**: For teams, either an ID or slug. For users, either a email address, username, or ID.
 
-This property determines the scope ([user or team](/docs/v2/platform/users-and-teams/)) under which the project will be deployed by [Now CLI](/download).
+This property determines the scope ([user or team](/docs/v2/advanced/platform/users-and-teams/)) under which the project will be deployed by [Now CLI](/download).
 
-Furthermore, it also affects any other actions that the user takes within the directory that contains this configuration (e.g. listing [secrets](https://zeit.co/docs/v2/deployments/environment-variables-and-secrets/#securing-environment-variables-using-secrets) using `now secrets ls`).
+Furthermore, it also affects any other actions that the user takes within the directory that contains this configuration (e.g. listing [secrets](/docs/v2/serverless-functions/env-and-secrets/) using `now secrets ls`).
 
 <Example>
   <b>Usage Example:</b>
@@ -139,7 +139,7 @@ Environment variables passed to the invoked [Lambdas](/docs/v2/advanced/concepts
 
 **Valid values:** environment keys and values.
 
-[Environment variables](/docs/v2/deployments/environment-variables-and-secrets/#from-now.json) passed to the [Build](/docs/v2/advanced/builders) processes.
+[Environment variables](/docs/v2/build-step/#using-environment-variables-and-secrets) passed to the [Build](/docs/v2/advanced/builders) processes.
 
 <Example>
   <b>Usage Example:</b>
@@ -149,7 +149,7 @@ Environment variables passed to the invoked [Lambdas](/docs/v2/advanced/concepts
     <GenericLink href="/docs/v2/advanced/builders">Builds</GenericLink> and
     <InlineCode>SECRET</InlineCode> resolved from the <InlineCode>
       my-secret-name
-    </InlineCode> <GenericLink href="/docs/v2/deployments/environment-variables-and-secrets">
+    </InlineCode> <GenericLink href="/docs/v2/build-step/#using-environment-variables-and-secrets">
       secret
     </GenericLink> dynamically.
   </P>
@@ -181,8 +181,7 @@ Environment variables passed to the invoked [Lambdas](/docs/v2/advanced/concepts
     The following will include all HTML files as-is (to be served statically),
     and <GenericLink href="/docs/v2/advanced/builders">Build</GenericLink> all
     Python files and JS files into{' '}
-    <GenericLink href="/docs/v2/advanced/concepts/lambdas">Lambdas</GenericLink>
-    .
+    <GenericLink href="/docs/v2/advanced/concepts/lambdas">Lambdas</GenericLink>.
   </P>
   <Code lang="json">{`{
   "builds": [
@@ -201,11 +200,7 @@ Environment variables passed to the invoked [Lambdas](/docs/v2/advanced/concepts
   <InlineCode>@now/static</InlineCode>.
 </Note>
 
-For more information on builds and builders, see the documentation:
-
-<Card title="Builds" href="/docs/v2/advanced/builders">
-  Transform sources into production ready outputs with builds.
-</Card>
+For more information on Builds and Builders, see the documentation:
 
 <Card title="Builders" href="/docs/v2/advanced/builders">
   Choose from a range of existing builders or make your own.
@@ -230,7 +225,8 @@ For more information on builds and builders, see the documentation:
   <b>Usage Example:</b>
   <P>
     This example configures custom routes that map to static files and{' '}
-    <GenericLink href="/docs/v2/advanced/concepts/lambdas">Lambdas</GenericLink>.
+    <GenericLink href="/docs/v2/advanced/concepts/lambdas">Lambdas</GenericLink>
+    .
   </P>
   <Code lang="json">{`{
   "builds": [
@@ -251,7 +247,7 @@ For more information on builds and builders, see the documentation:
 
 For more information on routes, see the documentation:
 
-<Card title="Routes" href="/docs/v2/deployments/routes">
+<Card title="Routes" href="/docs/v2/advanced/routes">
   Control your deployment's paths in detail with routes.
 </Card>
 
@@ -259,9 +255,9 @@ For more information on routes, see the documentation:
 
 **Type:** `Array` of region identifier `String`.
 
-**Valid values:** a list of valid [region identifiers](/docs/v2/platform/regions-and-providers).
+**Valid values:** a list of valid [region identifiers](/docs/v2/advanced/platform/regions-and-providers).
 
-By setting and modifying this value, you can decide the deployment **regions** of the [Lambdas](/docs/v2/advanced/concepts/lambdas) that get created as a result of the [build steps](/docs/v2/advanced/builders). By default, the closest region to the geographical location of the deployment is used, or if using a Now for Git integration, SFO is used by default.
+By setting and modifying this value, you can decide the deployment **regions** of the [Lambdas](/docs/v2/advanced/concepts/lambdas) that get created as a result of the [build steps](/docs/v2/build-step). By default, the closest region to the geographical location of the deployment is used, or if using a Now for Git integration, SFO is used by default.
 
 This value does not impact static files or edge caches, since deployments always have a [CDN layer](/docs/v2/advanced/concepts/cdn-and-global-distribution/) in front.
 
@@ -298,7 +294,7 @@ When set to `true`, both the [source view](/docs/v2/advanced/concepts/special-pa
 
 **Type**: `Boolean`.
 
-When set to `false`, [Now for GitHub](/docs/v2/integrations/now-for-github) will not deploy the given project regardless of the GitHub app being installed.
+When set to `false`, [Now for GitHub](/docs/v2/advanced/now-for-github) will not deploy the given project regardless of the GitHub app being installed.
 
 <Example>
   <b>Usage Example:</b>
@@ -313,7 +309,7 @@ When set to `false`, [Now for GitHub](/docs/v2/integrations/now-for-github) will
 
 **Type**: `Boolean`.
 
-When set to `false`, [Now for GitHub](/docs/v2/integrations/now-for-github) will not apply the alias upon merge.
+When set to `false`, [Now for GitHub](/docs/v2/advanced/now-for-github) will not apply the alias upon merge.
 
 <Example>
   <b>Usage Example:</b>
@@ -329,7 +325,7 @@ When set to `false`, [Now for GitHub](/docs/v2/integrations/now-for-github) will
 
 **Type**: `Boolean`.
 
-When set to `true`, [Now for GitHub](/docs/v2/integrations/now-for-github) will stop commenting on pull requests and commits.
+When set to `true`, [Now for GitHub](/docs/v2/advanced/now-for-github) will stop commenting on pull requests and commits.
 
 <Example>
   <b>Usage Example:</b>
@@ -344,7 +340,7 @@ When set to `true`, [Now for GitHub](/docs/v2/integrations/now-for-github) will 
 
 **Type**: `Boolean`.
 
-When set to false, [Now for GitHub](/docs/v2/integrations/now-for-github) will always build pushes in sequence without cancelling a build for the most recent commit.
+When set to false, [Now for GitHub](/docs/v2/advanced/now-for-github) will always build pushes in sequence without cancelling a build for the most recent commit.
 
 <Example>
   <b>Usage Example:</b>

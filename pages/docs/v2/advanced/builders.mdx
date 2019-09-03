@@ -292,7 +292,7 @@ The default Node.js version used is **8.10.x** but can be changed to **10.x** by
 
 <Tag>Status: Alpha</Tag>
 
-The Go Builder is used by Now to compile Go Serverless Functions that expose a single HTTP handler, including using the `net/http` Go API, from a `.go` file within an `/api` directory at your project's root.
+The Go Builder is used by Now to compile Go Serverless Functions that expose a single HTTP handler, from a `.go` file within an `/api` directory at your project's root.
 
 For example, define an `index.go` file inside an `/api` directory as follows:
 
@@ -315,6 +315,15 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 </Caption>
 
 For advanced usage, such as using private packages with your Go projects, see the [Advanced Go Usage section](#advanced-go-usage).
+
+<Note>
+  The exported function needs to include the{' '}
+  <GenericLink href="https://golang.org/pkg/net/http/#HandlerFunc">
+    <InlineCode>HandlerFunc</InlineCode>
+  </GenericLink>{' '}
+  signature type, but can use any valid Go exported function declaration as the
+  function name.
+</Note>
 
 ### Go Version
 
@@ -789,7 +798,7 @@ You can configure your own build step using the Go Builder, to compile Go source
   using the Go Builder.
 </Caption>
 
-**The entry point of this Builder is a global matching `.go` files** that export a function that implements the `net/http` API. For more information on using this Builder, [see the Go Builder section](#go).
+**The entry point of this Builder is a global matching `.go` files** that export a function that implements the `http.HandlerFunc` signature. For more information on using this Builder, [see the Go Builder section](#go).
 
 #### Private Packages for Go
 
