@@ -825,7 +825,7 @@ With GitHub, you will need to [create a personal token](https://github.com/setti
 
 #### Go Build Configuration
 
-You can provide custom build flags by using `GO_BUILD_FLAGS`.
+You can provide custom build flags by using the `GO_BUILD_FLAGS` [build environment variable](/docs/v2/environment-variables-and-secrets).
 
 ```json
 {
@@ -840,7 +840,7 @@ You can provide custom build flags by using `GO_BUILD_FLAGS`.
 <Caption>
   An example <InlineCode>-ldflags</InlineCode> flag with{' '}
   <InlineCode>-s -w</InlineCode>. This will remove debug information from the
-  binary file, reduce its file size. Go Builder already included this flag.
+  output file. This is the default value when no `GO_BUILD_FLAGS` are provided.
 </Caption>
 
 ### Advanced Python Usage
